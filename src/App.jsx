@@ -19,7 +19,7 @@ function App() {
   const clientRef = useRef(null);
 
   // MQTT服务器地址
-  const MQTT_SERVER = "ws://localhost:1884/mqtt";
+  const MQTT_SERVER = "ws://localhost:8083";
 
   // 连接MQTT服务器
   const connectToBroker = () => {
@@ -32,7 +32,14 @@ function App() {
       clean: true,
       reconnectPeriod: 1000,
       connectTimeout: 30 * 1000,
-      clientId: "mqttjs_" + Math.random().toString(16).substr(2, 8)
+      clientId: "mqttjs_" + Math.random().toString(16).substr(2, 8),
+      // 自动重连配置
+      will: {
+        topic: 'WillMsg',
+        payload: 'Connection Closed abnormally..!',
+        qos: 0,
+        retain: false
+      }
     };
 
     try {
@@ -51,6 +58,13 @@ function App() {
 
       clientRef.current.on("reconnect", () => {
         setConnectionStatus("重新连接中...");
+        console.log("正在重新连接...");
+      });
+
+      clientRef.current.on("offline", () => {
+        setIsConnected(false);
+        setConnectionStatus("离线");
+        console.log("MQTT客户端离线");
       });
 
       clientRef.current.on("close", () => {
