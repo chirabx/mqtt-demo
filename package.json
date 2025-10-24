@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test:workers": "node test-workers.js",
-    "start:workers": "node start-workers.js"
+    "start:workers": "node start-workers.js",
+    "benchmark": "node benchmark-mqtt.js"
   },
   "dependencies": {
     "mqtt": "^5.14.1",
