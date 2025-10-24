@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test:workers": "node test-workers.js",
+    "start:workers": "node start-workers.js"
   },
   "dependencies": {
     "mqtt": "^5.14.1",
