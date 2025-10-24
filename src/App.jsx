@@ -18,8 +18,10 @@ function App() {
   // MQTT客户端引用
   const clientRef = useRef(null);
 
-  // MQTT服务器地址
-  const MQTT_SERVER = "ws://localhost:8083";
+  // MQTT服务器地址 - 根据环境自动选择
+  const MQTT_SERVER = window.location.protocol === 'https:'
+    ? 'wss://' + window.location.host + '/mqtt'
+    : 'ws://localhost:8083';
 
   // 连接MQTT服务器
   const connectToBroker = () => {
