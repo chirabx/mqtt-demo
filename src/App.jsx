@@ -23,6 +23,9 @@ function App() {
     ? 'wss://' + window.location.host + '/mqtt'
     : 'ws://localhost:8083';
 
+  // 显示当前使用的连接地址（用于调试）
+  console.log('MQTT连接地址:', MQTT_SERVER);
+
   // 连接MQTT服务器
   const connectToBroker = () => {
     setConnectionStatus("连接中...");
