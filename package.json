@@ -11,7 +11,9 @@
     "test:workers": "node test-workers.js",
     "start:workers": "node start-workers.js",
     "benchmark": "node benchmark-mqtt.js",
-    "echo-server": "node echo-server.js"
+    "benchmark:compare": "node benchmark-compare.js",
+    "echo-server": "node echo-server.js",
+    "http-echo-server": "node http-echo-server.js"
   },
   "dependencies": {
     "mqtt": "^5.14.1",
