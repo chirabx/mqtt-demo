@@ -7,6 +7,10 @@ export default defineConfig({
   server: {
     host: '0.0.0.0',
     port: 5173,
+    allowedHosts: [
+      'localhost',
+      '.chirabx.xyz'  // 允许所有 chirabx.xyz 的子域名
+    ],
     proxy: {
       '/mqtt': {
         target: 'ws://localhost:8083',
