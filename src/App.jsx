@@ -18,12 +18,10 @@ function App() {
   // MQTT客户端引用
   const clientRef = useRef(null);
 
-  // MQTT服务器地址 - 根据环境自动选择
   const MQTT_SERVER = window.location.protocol === 'https:'
     ? 'wss://' + window.location.host + '/mqtt'
     : 'ws://localhost:8083';
 
-  // 显示当前使用的连接地址（用于调试）
   console.log('MQTT连接地址:', MQTT_SERVER);
 
   // 连接MQTT服务器
