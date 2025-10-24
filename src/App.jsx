@@ -19,7 +19,7 @@ function App() {
   const clientRef = useRef(null);
 
   // MQTT服务器地址
-  const MQTT_SERVER = "ws://121.40.124.170:1884/mqtt";
+  const MQTT_SERVER = "ws://localhost:1884/mqtt";
 
   // 连接MQTT服务器
   const connectToBroker = () => {
