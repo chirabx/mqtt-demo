@@ -1,5 +1,5 @@
 // worker.js - MQTT 共享订阅工作池
-const mqtt = require('mqtt');
+import mqtt from 'mqtt';
 
 // 获取 worker ID（从命令行参数或环境变量）
 const workerId = process.argv[2] || process.env.WORKER_ID || 'worker_1';

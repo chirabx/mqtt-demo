@@ -1,5 +1,5 @@
 // producer.js - MQTT 消息生产者
-const mqtt = require('mqtt');
+import mqtt from 'mqtt';
 
 // 连接到 MQTT 服务器
 const client = mqtt.connect('ws://localhost:8083', {

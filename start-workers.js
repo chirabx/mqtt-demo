@@ -1,6 +1,10 @@
 // start-workers.js - 启动多个 worker 进程
-const { spawn } = require('child_process');
-const path = require('path');
+import { spawn } from 'child_process';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const workerCount = 3; // 启动 3 个 worker
 const workers = [];
@@ -9,7 +13,7 @@ console.log(`启动 ${workerCount} 个 worker 进程...\n`);
 
 // 启动多个 worker
 for (let i = 1; i <= workerCount; i++) {
-    const worker = spawn('node', [path.join(__dirname, 'worker.js'), `worker_${i}`], {
+    const worker = spawn('node', [join(__dirname, 'worker.js'), `worker_${i}`], {
         stdio: 'inherit',
         env: { ...process.env, WORKER_ID: `worker_${i}` }
     });
@@ -23,7 +27,7 @@ for (let i = 1; i <= workerCount; i++) {
 
 // 启动 producer
 console.log('\n启动 producer...\n');
-const producer = spawn('node', [path.join(__dirname, 'producer.js')], {
+const producer = spawn('node', [join(__dirname, 'producer.js')], {
     stdio: 'inherit'
 });
 
